@@ -1,4 +1,4 @@
-package com.angelo.voteapicloud.voteApi.core.domain.dto.rest;
+package com.angelo.voteapicloud.voteApi.infra.database.entity;
 
 import com.angelo.voteapicloud.voteApi.commons.exceptions.mappers.BaseEntity;
 import lombok.AllArgsConstructor;
@@ -6,17 +6,25 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import java.util.UUID;
 
+@Entity
 @Data
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class ScheduleVoteCore implements BaseEntity {
-    @NotBlank(message = "empty/null scheduleName")
+public class ScheduleVoteEntity implements BaseEntity {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", nullable = false)
+    private Long id;
+
+    @NotBlank(message = "scheduleName cannot be null")
     private String scheduleName;
 
-    @NotBlank(message = "empty/null scheduleDescription")
+    @NotBlank(message = "scheduleDescription cannot be null")
     private String scheduleDescription;
 
     @Override
