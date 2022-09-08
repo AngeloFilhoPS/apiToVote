@@ -23,8 +23,7 @@ public class ScheduleVoteAdapter implements ScheduleVoteRepositoryPort {
     public List<ScheduleVoteEntity> findAllScheduleVote() throws Exception{
         if(scheduleVoteRepository.findAll().size()==0) {
             throw new Exception("Não foram encontradas pautas");
-        } return findAllScheduleVote();
-
-
+        }
+        return scheduleVoteRepository.findAll();
     }
 }
