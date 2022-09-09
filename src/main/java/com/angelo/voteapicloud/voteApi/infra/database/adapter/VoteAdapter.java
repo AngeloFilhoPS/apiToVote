@@ -11,6 +11,7 @@ import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Objects;
 
 @Service
 public class VoteAdapter implements VoteRepositoryPort {
@@ -23,12 +24,12 @@ public class VoteAdapter implements VoteRepositoryPort {
     @Autowired
     private ScheduleVoteAdapter scheduleVoteAdapter;
 
-    @Autowired
-    private DocumentVerifyClient documentVerifyClient;
+
 
     @Override
     public VoteEntity sendVote(VoteEntity voteEntity) throws Exception {
-        documentVerifyClient.checkIfIsAValidDocument(voteEntity.getCpf());
+        //TODO ERRO NA DEPENDENCIA DE PARSE, VERIFICAR JACKSON
+        //verifyCpf(voteEntity.getCpf());
         scheduleVoteAdapter.existScheduleVote(voteEntity.getIdScheduleVote());
         isDuplicateVote(voteEntity);
         return voteRepository.save(voteEntity);
@@ -39,6 +40,12 @@ public class VoteAdapter implements VoteRepositoryPort {
                 voteEntity.getIdScheduleVote(),voteEntity.getIdVoteSession()) != null){
             throw new DuplicateKeyException("Voto já computado");
         }else return true;
+    }
+
+    private void verifyCpf(String cpf) throws Exception {
+        DocumentVerifyClient verifyClient = new DocumentVerifyClient();
+        if (Objects.equals(verifyClient.checkIfIsAValidDocument(cpf).getStatus(), "UNABLE_TO_VOTE"))
+            throw new IllegalAccessException("Este CPF não está válido para a votação");
     }
 
     @Override

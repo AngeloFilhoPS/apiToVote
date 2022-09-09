@@ -14,6 +14,7 @@ public class VoteDTOtoEntity implements GenericMapper<VoteEntity, VoteDTO>{
                 .dtVote(new Date())
                 .idScheduleVote(dto.getIdScheduleVote())
                 .idVoteSession(dto.getIdVoteSession())
+                .vote(dto.getVote())
                 .cpf(dto.getCpf())
                 .build();
     }
