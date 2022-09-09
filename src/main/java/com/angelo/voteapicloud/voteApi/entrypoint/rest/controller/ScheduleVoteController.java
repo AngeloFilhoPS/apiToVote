@@ -21,7 +21,6 @@ public class ScheduleVoteController {
 
     private final ScheduleVoteDTOtoCore scheduleVoteDTOtoCore = new ScheduleVoteDTOtoCore();
 
-
     @PostMapping
     public ResponseEntity registerSchedule(@Valid @RequestBody ScheduleVoteDTO scheduleVote) throws Exception{
         try {
