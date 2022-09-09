@@ -26,4 +26,13 @@ public class ScheduleVoteAdapter implements ScheduleVoteRepositoryPort {
         }
         return scheduleVoteRepository.findAll();
     }
+
+    @Override
+    public boolean existScheduleVote(Long idScheduleVote) throws Exception {
+        if(scheduleVoteRepository.findById(idScheduleVote).isPresent()){
+            return true;
+        } else {
+            throw new Exception("Nenhuma sessão com esse Id");
+        }
+    }
 }

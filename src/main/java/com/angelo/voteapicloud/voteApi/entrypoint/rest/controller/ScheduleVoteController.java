@@ -2,7 +2,7 @@ package com.angelo.voteapicloud.voteApi.entrypoint.rest.controller;
 
 import com.angelo.voteapicloud.voteApi.core.adapter.ScheduleVoteControllerAdapter;
 import com.angelo.voteapicloud.voteApi.entrypoint.rest.dto.ScheduleVoteDTO;
-import com.angelo.voteapicloud.voteApi.commons.exceptions.mappers.ScheduleVoteDTOtoCore;
+import com.angelo.voteapicloud.voteApi.commons.mappers.ScheduleVoteDTOtoCore;
 import com.angelo.voteapicloud.voteApi.infra.database.entity.ScheduleVoteEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

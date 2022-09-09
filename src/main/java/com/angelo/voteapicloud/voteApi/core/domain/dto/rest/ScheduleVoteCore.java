@@ -1,6 +1,6 @@
 package com.angelo.voteapicloud.voteApi.core.domain.dto.rest;
 
-import com.angelo.voteapicloud.voteApi.commons.exceptions.mappers.BaseEntity;
+import com.angelo.voteapicloud.voteApi.commons.mappers.BaseEntity;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

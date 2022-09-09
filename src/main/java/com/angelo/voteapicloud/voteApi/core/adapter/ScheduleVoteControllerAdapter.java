@@ -1,6 +1,6 @@
 package com.angelo.voteapicloud.voteApi.core.adapter;
 
-import com.angelo.voteapicloud.voteApi.commons.exceptions.mappers.ScheduleVoteCoreToEntity;
+import com.angelo.voteapicloud.voteApi.commons.mappers.ScheduleVoteCoreToEntity;
 import com.angelo.voteapicloud.voteApi.core.domain.dto.rest.ScheduleVoteCore;
 import com.angelo.voteapicloud.voteApi.core.port.ScheduleVoteControllerPort;
 import com.angelo.voteapicloud.voteApi.infra.database.adapter.ScheduleVoteAdapter;

@@ -1,6 +1,6 @@
 package com.angelo.voteapicloud.voteApi.infra.database.entity;
 
-import com.angelo.voteapicloud.voteApi.commons.exceptions.mappers.BaseEntity;
+import com.angelo.voteapicloud.voteApi.commons.mappers.BaseEntity;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -8,7 +8,6 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
-import java.util.UUID;
 
 @Entity
 @Data

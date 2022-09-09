@@ -29,11 +29,13 @@ public class VoteSessionAdapter implements VoteSessionControllerPort {
         return voteSessionRepository.save(voteSessionEntity);
     }
 
+    @Override
+    public VoteSessionEntity finishSessionVotes(Long id) throws Exception {
+        return null;
+    }
 
 
-
-
-    private boolean validScheduleVote(Long idScheduleVote) throws Exception{
+    public boolean validScheduleVote(Long idScheduleVote) throws Exception{
         LOGGER.info("INFRA - validScheduleVote - isValid");
         if(scheduleVoteRepository.findById(idScheduleVote).isPresent()){
             System.out.println(scheduleVoteRepository.findById(idScheduleVote).isPresent());

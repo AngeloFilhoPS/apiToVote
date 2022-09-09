@@ -1,6 +1,6 @@
 package com.angelo.voteapicloud.voteApi.entrypoint.rest.controller;
 
-import com.angelo.voteapicloud.voteApi.commons.exceptions.mappers.VoteSessionDTOtoEntity;
+import com.angelo.voteapicloud.voteApi.commons.mappers.VoteSessionDTOtoEntity;
 import com.angelo.voteapicloud.voteApi.core.adapter.VoteSessionControllerAdapter;
 import com.angelo.voteapicloud.voteApi.entrypoint.rest.dto.VoteSessionDTO;
 import com.angelo.voteapicloud.voteApi.infra.database.entity.VoteSessionEntity;
@@ -26,10 +26,20 @@ public class VoteSessionController {
 
     @PostMapping
     public ResponseEntity openSessionVotes(@Valid @RequestBody VoteSessionDTO votingSession) throws Exception {
-            LOGGER.info("VoteSessionController - open session votes - init flow");
+            LOGGER.info("VoteSessionController - open session votes - init flow - API REQUEST");
         try{
             sessionControllerAdapter.registerVoteSession(voteSessionDTOtoEntity.convertToEntity(votingSession));
             return ResponseEntity.status(HttpStatus.CREATED).build();
+        }catch (Exception e){
+            throw e;
+        }
+    }
+
+    @PatchMapping
+    public ResponseEntity<VoteSessionEntity> finishSessionVotes(@RequestParam() Long id) throws Exception{
+        try {
+            LOGGER.info("VoteSessionController - finish session votes - init flow - API REQUEST");
+            return ResponseEntity.status(HttpStatus.CREATED).body(sessionControllerAdapter.finishSessionVotes(id));
         }catch (Exception e){
             throw e;
         }

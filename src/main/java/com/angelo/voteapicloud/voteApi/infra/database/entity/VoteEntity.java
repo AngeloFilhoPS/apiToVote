@@ -10,32 +10,33 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.util.Date;
 
-
+@Entity
 @Data
 @Builder
-@Entity
 @AllArgsConstructor
 @NoArgsConstructor
-public class VoteSessionEntity implements BaseEntity<Long> {
+public class VoteEntity implements BaseEntity<Long> {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private boolean sessionOpen;
-
-    @NotNull(message = "id for ScheduleVote cannot be null")
+    @NotNull(message = "idScheduleVote cannot be null")
     private Long idScheduleVote;
 
-    private Integer minDurationSession;
+    @NotNull(message = "idVoteSession cannot be null")
+    private Long idVoteSession;
 
-    private int votesYes;
+    @NotBlank(message = "vote cannot be null")
+    private String vote;
 
-    private int votesNo;
+    @NotBlank(message = "CPF cannot be null")
+    private String cpf;
 
-    private Date dtOpenSession;
+    private Date dtVote;
+
 }
-

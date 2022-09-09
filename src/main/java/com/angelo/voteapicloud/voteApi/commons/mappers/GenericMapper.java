@@ -1,4 +1,4 @@
-package com.angelo.voteapicloud.voteApi.commons.exceptions.mappers;
+package com.angelo.voteapicloud.voteApi.commons.mappers;
 
 public interface GenericMapper<E extends BaseEntity, D> {
 

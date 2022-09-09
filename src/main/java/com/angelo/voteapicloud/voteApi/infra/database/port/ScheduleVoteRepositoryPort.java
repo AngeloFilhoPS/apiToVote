@@ -10,5 +10,6 @@ public interface ScheduleVoteRepositoryPort  {
 
     ScheduleVoteEntity registerScheduleVoteEntity(ScheduleVoteEntity scheduleVoteEntity) throws Exception;
     List<ScheduleVoteEntity> findAllScheduleVote() throws Exception;
+    boolean existScheduleVote(Long idScheduleVote) throws Exception;
 
 }
