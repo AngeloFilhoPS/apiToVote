@@ -3,6 +3,7 @@ package com.angelo.voteapicloud.voteApi.entrypoint.rest.controller;
 import com.angelo.voteapicloud.voteApi.commons.exceptions.mappers.VoteSessionDTOtoEntity;
 import com.angelo.voteapicloud.voteApi.core.adapter.VoteSessionControllerAdapter;
 import com.angelo.voteapicloud.voteApi.entrypoint.rest.dto.VoteSessionDTO;
+import com.angelo.voteapicloud.voteApi.infra.database.entity.VoteSessionEntity;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +18,6 @@ import javax.validation.Valid;
 public class VoteSessionController {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(VoteSessionController.class);
-
 
     @Autowired
     VoteSessionControllerAdapter sessionControllerAdapter;
@@ -34,5 +34,6 @@ public class VoteSessionController {
             throw e;
         }
     }
+
 
 }
