@@ -15,7 +15,7 @@ Objetivos
 ---
 # Estrutura do projeto
 
-
+![portsadapters](https://user-images.githubusercontent.com/49157485/189348690-7492abe9-8843-4dd0-92e0-52af052cb897.png)
 
 # Endpoints
 Para fazer os testes, importe as requisições no Insominia ou Postman
