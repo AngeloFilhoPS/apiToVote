@@ -30,8 +30,11 @@ public class VoteAdapter implements VoteRepositoryPort {
     public VoteEntity sendVote(VoteEntity voteEntity) throws Exception {
         //TODO ERRO NA DEPENDENCIA DE PARSE, VERIFICAR JACKSON
         //verifyCpf(voteEntity.getCpf());
+        LOGGER.info("VoteAdapter - sendVote - verify if exist ScheduleVote");
         scheduleVoteAdapter.existScheduleVote(voteEntity.getIdScheduleVote());
+        LOGGER.info("VoteAdapter - sendVote - verify complete");
         isDuplicateVote(voteEntity);
+        LOGGER.info("VoteAdapter - sendVote - verify duplicate vote");
         return voteRepository.save(voteEntity);
     }
 
