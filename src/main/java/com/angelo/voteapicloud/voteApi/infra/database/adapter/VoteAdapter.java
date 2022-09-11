@@ -29,7 +29,7 @@ public class VoteAdapter implements VoteRepositoryPort {
     @Override
     public VoteEntity sendVote(VoteEntity voteEntity) throws Exception {
         //TODO ERRO NA DEPENDENCIA DE PARSE, VERIFICAR JACKSON
-        //verifyCpf(voteEntity.getCpf());
+        verifyCpf(voteEntity.getCpf());
         LOGGER.info("VoteAdapter - sendVote - verify if exist ScheduleVote");
         scheduleVoteAdapter.existScheduleVote(voteEntity.getIdScheduleVote());
         LOGGER.info("VoteAdapter - sendVote - verify complete");
@@ -48,7 +48,7 @@ public class VoteAdapter implements VoteRepositoryPort {
     private void verifyCpf(String cpf) throws Exception {
         DocumentVerifyClient verifyClient = new DocumentVerifyClient();
         if (Objects.equals(verifyClient.checkIfIsAValidDocument(cpf).getStatus(), "UNABLE_TO_VOTE"))
-            throw new IllegalAccessException("Este CPF não está válido para a votação");
+            throw new Exception("Este CPF não está válido para a votação");
     }
 
     @Override

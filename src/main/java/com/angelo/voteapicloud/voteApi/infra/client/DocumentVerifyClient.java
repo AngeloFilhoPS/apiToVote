@@ -15,7 +15,7 @@ public class DocumentVerifyClient {
             RestTemplate restTemplate = new RestTemplate();
             return restTemplate.getForObject(url, DocumentOk.class);
         } catch (Exception e) {
-            throw new Exception("ERRO: " + e);
+            throw new Exception("ERRO: CPF INVALIDO/NAO REGISTRADO " + e);
         }
     }
 

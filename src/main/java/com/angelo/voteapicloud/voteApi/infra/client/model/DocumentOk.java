@@ -6,6 +6,14 @@ import java.io.Serializable;
 @Data
 @Builder
 public class DocumentOk implements Serializable{
+
+
     private String status;
+
+    public DocumentOk(){
+    };
+    public DocumentOk(String status){
+        this.status = status;
+    }
 }
 

@@ -36,9 +36,13 @@ public class VoteSessionControllerAdapter implements VoteSessionControllerPort {
 
     @Override
     public VoteSessionEntity finishSessionVotes(Long id) throws Exception {
+        LOGGER.info("CORE - finishSessionVotes - vote session end start");
         voteSessionAdapter.validScheduleVote(id);
+        LOGGER.info("CORE - finishSessionVotes - validScheduleVote completed");
         VoteSessionEntity voteSessionEntity = countVotes(voteSessionRepository.getById(id));
+        LOGGER.info("CORE - finishSessionVotes - count votes completed");
         voteSessionEntity.setSessionOpen(false);
+        LOGGER.info("CORE - finishSessionVotes - session vote closed saving and returning");
         return voteSessionRepository.save(voteSessionEntity);
 
     }

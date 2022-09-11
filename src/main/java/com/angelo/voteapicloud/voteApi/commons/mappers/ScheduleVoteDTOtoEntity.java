@@ -1,15 +1,15 @@
 package com.angelo.voteapicloud.voteApi.commons.mappers;
 
-import com.angelo.voteapicloud.voteApi.core.domain.dto.rest.ScheduleVoteCore;
 import com.angelo.voteapicloud.voteApi.entrypoint.rest.dto.ScheduleVoteDTO;
+import com.angelo.voteapicloud.voteApi.infra.database.entity.ScheduleVoteEntity;
 
-public class ScheduleVoteDTOtoCore implements GenericMapper<ScheduleVoteCore, ScheduleVoteDTO>{
+public class ScheduleVoteDTOtoEntity implements GenericMapper<ScheduleVoteEntity, ScheduleVoteDTO>{
 
 
     @Override
-    public ScheduleVoteCore convertToEntity(ScheduleVoteDTO dto) {
+    public ScheduleVoteEntity convertToEntity(ScheduleVoteDTO dto) {
 
-            return ScheduleVoteCore.builder()
+            return ScheduleVoteEntity.builder()
                     .scheduleName(dto.getScheduleName())
                     .scheduleDescription(dto.getScheduleDescription())
                     .build();

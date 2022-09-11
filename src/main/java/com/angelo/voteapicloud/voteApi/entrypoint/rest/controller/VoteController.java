@@ -1,6 +1,5 @@
 package com.angelo.voteapicloud.voteApi.entrypoint.rest.controller;
 
-import com.angelo.voteapicloud.voteApi.commons.mappers.VoteDTOtoEntity;
 import com.angelo.voteapicloud.voteApi.core.adapter.VoteControllerAdapter;
 import com.angelo.voteapicloud.voteApi.entrypoint.rest.dto.VoteDTO;
 import com.angelo.voteapicloud.voteApi.infra.database.entity.VoteEntity;
@@ -25,14 +24,11 @@ public class VoteController {
     @Autowired
     VoteControllerAdapter voteControllerAdapter;
 
-    private final VoteDTOtoEntity voteDTOtoEntity = new VoteDTOtoEntity();
-
     @PostMapping
     public ResponseEntity<VoteEntity> sendVote(@Valid @RequestBody VoteDTO voteDTO) throws Exception{
         try {
             LOGGER.info("Vote Controller - sendVote - init flow");
-            System.out.println(voteDTO.getCpf());
-            return ResponseEntity.status(HttpStatus.CREATED).body(voteControllerAdapter.sendVote(voteDTOtoEntity.convertToEntity(voteDTO)));
+            return ResponseEntity.status(HttpStatus.CREATED).body(voteControllerAdapter.sendVote(voteDTO));
         }catch (Exception e){
             throw e;
         }

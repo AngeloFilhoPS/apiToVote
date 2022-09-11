@@ -38,7 +38,6 @@ public class VoteSessionAdapter implements VoteSessionControllerPort {
     public boolean validScheduleVote(Long idScheduleVote) throws Exception{
         LOGGER.info("INFRA - validScheduleVote - isValid");
         if(scheduleVoteRepository.findById(idScheduleVote).isPresent()){
-            System.out.println(scheduleVoteRepository.findById(idScheduleVote).isPresent());
             LOGGER.info("INFRA - validScheduleVote - isValid");
             return true;
         } else {
