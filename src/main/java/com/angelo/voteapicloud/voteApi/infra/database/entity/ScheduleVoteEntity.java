@@ -27,11 +27,6 @@ public class ScheduleVoteEntity implements BaseEntity {
     private String scheduleDescription;
 
     @Override
-    public Object getId() {
-        return null;
-    }
-
-    @Override
     public void setId(Object o) {
 
     }
