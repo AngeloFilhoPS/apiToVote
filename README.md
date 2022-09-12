@@ -19,6 +19,8 @@ Objetivos
 
 * Fui usado o padrão de projeto a Arquitetura Hexagonal(Ports and Adapters) pois é que venho atuando nos ultimos anos.
 
+* Demais funcionalidades não implementadas por falta de tempo e demandas pessoais.
+
 # Endpoints
 Para fazer os testes, importe as requisições no Insominia ou Postman
 
