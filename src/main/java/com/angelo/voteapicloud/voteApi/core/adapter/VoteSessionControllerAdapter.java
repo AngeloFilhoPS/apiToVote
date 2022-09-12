@@ -1,6 +1,8 @@
 package com.angelo.voteapicloud.voteApi.core.adapter;
 
+import com.angelo.voteapicloud.voteApi.commons.mappers.VoteSessionDTOtoEntity;
 import com.angelo.voteapicloud.voteApi.core.port.VoteSessionControllerPort;
+import com.angelo.voteapicloud.voteApi.entrypoint.rest.dto.VoteSessionDTO;
 import com.angelo.voteapicloud.voteApi.infra.database.adapter.VoteAdapter;
 import com.angelo.voteapicloud.voteApi.infra.database.adapter.VoteSessionAdapter;
 import com.angelo.voteapicloud.voteApi.infra.database.entity.VoteEntity;
@@ -28,10 +30,12 @@ public class VoteSessionControllerAdapter implements VoteSessionControllerPort {
     @Autowired
     VoteAdapter voteAdapter;
 
+
+
     @Override
-    public VoteSessionEntity registerVoteSession(VoteSessionEntity voteSessionEntity) throws Exception {
+    public VoteSessionEntity registerVoteSession(VoteSessionDTO voteSessionDto) throws Exception {
         LOGGER.info("CORE - register vote session - send to infra");
-        return voteSessionAdapter.registerVoteSession(voteSessionEntity);
+        return voteSessionAdapter.registerVoteSession(voteSessionDto);
     }
 
     @Override
