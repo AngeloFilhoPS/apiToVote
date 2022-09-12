@@ -7,6 +7,7 @@ import com.angelo.voteapicloud.voteApi.infra.database.repository.VoteRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Service;
 
@@ -24,12 +25,13 @@ public class VoteAdapter implements VoteRepositoryPort {
     @Autowired
     private ScheduleVoteAdapter scheduleVoteAdapter;
 
-
+    @Value("${cpf.url}")
+    private String url;
 
     @Override
     public VoteEntity sendVote(VoteEntity voteEntity) throws Exception {
         //TODO ERRO NA DEPENDENCIA DE PARSE, VERIFICAR JACKSON
-        //verifyCpf(voteEntity.getCpf());
+        verifyCpf(voteEntity.getCpf());
         LOGGER.info("VoteAdapter - sendVote - verify if exist ScheduleVote");
         scheduleVoteAdapter.existScheduleVote(voteEntity.getIdScheduleVote());
         LOGGER.info("VoteAdapter - sendVote - verify complete");
@@ -46,9 +48,9 @@ public class VoteAdapter implements VoteRepositoryPort {
     }
 
     private void verifyCpf(String cpf) throws Exception {
-        DocumentVerifyClient verifyClient = new DocumentVerifyClient();
+        DocumentVerifyClient verifyClient = new DocumentVerifyClient(url);
         if (Objects.equals(verifyClient.checkIfIsAValidDocument(cpf).getStatus(), "UNABLE_TO_VOTE"))
-            throw new IllegalAccessException("Este CPF não está válido para a votação");
+            throw new Exception("Este CPF não está válido para a votação");
     }
 
     @Override

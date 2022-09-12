@@ -22,13 +22,12 @@ public class VoteSessionController {
     @Autowired
     VoteSessionControllerAdapter sessionControllerAdapter;
 
-    private final VoteSessionDTOtoEntity voteSessionDTOtoEntity = new VoteSessionDTOtoEntity();
 
     @PostMapping
     public ResponseEntity openSessionVotes(@Valid @RequestBody VoteSessionDTO votingSession) throws Exception {
             LOGGER.info("VoteSessionController - open session votes - init flow - API REQUEST");
         try{
-            sessionControllerAdapter.registerVoteSession(voteSessionDTOtoEntity.convertToEntity(votingSession));
+            sessionControllerAdapter.registerVoteSession(votingSession);
             return ResponseEntity.status(HttpStatus.CREATED).build();
         }catch (Exception e){
             throw e;

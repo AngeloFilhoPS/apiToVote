@@ -12,7 +12,7 @@ import javax.validation.constraints.NotBlank;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class ScheduleVoteCore implements BaseEntity {
+public class ScheduleVoteEntity implements BaseEntity {
     @NotBlank(message = "empty/null scheduleName")
     private String scheduleName;
 

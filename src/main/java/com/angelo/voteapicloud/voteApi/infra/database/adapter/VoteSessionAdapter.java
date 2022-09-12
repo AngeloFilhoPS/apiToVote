@@ -1,7 +1,8 @@
 package com.angelo.voteapicloud.voteApi.infra.database.adapter;
 
+import com.angelo.voteapicloud.voteApi.commons.mappers.VoteSessionDTOtoEntity;
 import com.angelo.voteapicloud.voteApi.core.port.VoteSessionControllerPort;
-import com.angelo.voteapicloud.voteApi.entrypoint.rest.controller.VoteSessionController;
+import com.angelo.voteapicloud.voteApi.entrypoint.rest.dto.VoteSessionDTO;
 import com.angelo.voteapicloud.voteApi.infra.database.entity.VoteSessionEntity;
 import com.angelo.voteapicloud.voteApi.infra.database.repository.ScheduleVoteRepository;
 import com.angelo.voteapicloud.voteApi.infra.database.repository.VoteSessionRepository;
@@ -21,12 +22,14 @@ public class VoteSessionAdapter implements VoteSessionControllerPort {
 
     @Autowired
     private ScheduleVoteRepository scheduleVoteRepository;
+    private final VoteSessionDTOtoEntity voteSessionDTOtoEntity = new VoteSessionDTOtoEntity();
+
 
     @Override
-    public VoteSessionEntity registerVoteSession(VoteSessionEntity voteSessionEntity) throws Exception {
+    public VoteSessionEntity registerVoteSession(VoteSessionDTO voteSessionDTO) throws Exception {
         LOGGER.info("INFRA - registerVoteSession - validScheduleVote");
-        validScheduleVote(voteSessionEntity.getIdScheduleVote());
-        return voteSessionRepository.save(voteSessionEntity);
+        validScheduleVote(voteSessionDTO.getIdScheduleVote());
+        return voteSessionRepository.save(voteSessionDTOtoEntity.convertToEntity(voteSessionDTO));
     }
 
     @Override
@@ -38,7 +41,6 @@ public class VoteSessionAdapter implements VoteSessionControllerPort {
     public boolean validScheduleVote(Long idScheduleVote) throws Exception{
         LOGGER.info("INFRA - validScheduleVote - isValid");
         if(scheduleVoteRepository.findById(idScheduleVote).isPresent()){
-            System.out.println(scheduleVoteRepository.findById(idScheduleVote).isPresent());
             LOGGER.info("INFRA - validScheduleVote - isValid");
             return true;
         } else {
